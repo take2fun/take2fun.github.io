@@ -2,13 +2,13 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<title>実験</title>
-	<script src="processing.js"></script>
+  <meta charset="utf-8">
+  <title>実験</title>
+  <script src="processing.js"></script>
 </head>
 
 <body class="box">
-	<script type="text/processing">
+  <script type="text/processing">
 		int task = 0;
 int scene = 0;
 
@@ -204,16 +204,13 @@ void draw() {
     //textSize(24);
     //text("Time Limit", width/4+60, height*3/4-10);
     timer();
-
-    if (time == 0) {
-      back_1 += 4.25;
-    }
-
+    println(time);
+    back_1 = time * 4.25;
     if (back_1 > 255) {
       back_1 = 255;
       back_2 += 4.25;
     }
-	makeProgressBar();
+	  makeProgressBar();
     nextScene();
     break;
   case 100:
@@ -310,7 +307,7 @@ void keyReleased() {
 }
 
     </script>
-	<canvas></canvas>
+  <canvas></canvas>
 </body>
 
 </html>
