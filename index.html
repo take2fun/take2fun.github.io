@@ -1,0 +1,314 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>実験</title>
+	<script src="processing.js"></script>
+</head>
+
+<body class="box">
+	<script type="text/processing">
+		int task = 0;
+int scene = 0;
+
+int answer_list[] = {1, 2, 3, 4, 5, 6, 7};
+int x = 0;
+int y = 0;
+
+int num = 0;
+int count = 1;
+
+String answer = "";
+char keydata = ' ';
+
+float time = 0;
+float base_time = 0;
+int t = 0;
+float n = 0;
+float back_1 = 0;
+float back_2 = 0;
+
+
+void setup() {
+  size(1430, 700);
+  background(255);
+  x = int(random(10, 100));
+  y = int(random(10, 100));
+}
+
+void draw() {
+  background(255);
+
+  switch(scene) {
+  case 0:
+    fill(0);
+    textSize(56);
+    textAlign(CENTER);
+    text("Push Enterkey to Strat", width/2, height/2);
+    //text("scene0", width/2, (height/2)-100);
+
+    break;
+  case 1:
+    background(255);
+    noFill();
+    //progressBar
+    rect(width/2-250, height*3/4, 500, 40);
+    //task
+    rect(width/16+200, height/4, width/2-100, 100);
+    //answer
+    rect(width*10/16+100, height/4, 150, 100);
+    //next
+    //rect(width*13/16, height/4, 150, 100);
+
+    //display information
+    fill(0);
+    textSize(56);
+    textAlign(CENTER);
+    //text("next", width*13/16+75, height/4+65);
+    text(x+"+"+y, width/4+210, height/4+65);
+    text(answer, width*10/16+180, height/4+70);
+    textSize(24);
+    text("Time Limit", width/2-190, height*3/4-10);
+
+    timer();
+    makeProgressBar();
+    nextScene();
+
+    break;
+  case 2:
+    background(255);
+    noFill();
+    //progressBar
+    rect(width/2-250, height/4, 500, 40);
+    //task
+    rect(width/16+200, height*3/4-50, width/2-100, 100);
+    //answer
+    rect(width*10/16+100, height*3/4-50, 150, 100);
+    //next
+    //rect(width*13/16, height*3/4-50, 150, 100);
+
+    //display information
+    fill(0);
+    textSize(56);
+    textAlign(CENTER);
+    //text("next", width*13/16+75, height*3/4+15);
+    text(x+"+"+y, width/4+210, height*3/4+15);
+    text(answer, width*10/16+180, height*3/4+20);
+    textSize(24);
+    text("Time Limit", width/2-190, height/4-10);
+    timer();
+    makeProgressBar();
+    nextScene();
+
+    break;
+  case 3:
+    background(255);
+    noFill();
+    //progressBar
+    rect(width/2-250, height*3/4-50, 500, 40);
+    //task
+    rect(width/16+200, height/4+50, width/2-100, 100);
+    //answer
+    rect(width*10/16+100, height/4+50, 150, 100);
+    //next
+    //rect(width*13/16, height/4+50, 150, 100);
+
+    //display information
+    fill(0);
+    textSize(56);
+    textAlign(CENTER);
+    //text("next", width*13/16+75, height/4+115);
+    text(x+"+"+y, width/4+210, height/4+115);
+    text(answer, width*10/16+180, height/4+120);
+    textSize(24);
+    text("Time Limit", width/2-190, height*3/4-60);
+    timer();
+    makeProgressBar();
+    nextScene();
+
+    break;
+  case 4:
+    background(255);
+    noFill();
+    //progressBar
+    rect(width/2-250, height/4+50, 500, 40);
+    //task
+    rect(width/16+200, height*3/4-125, width/2-100, 100);
+    //answer
+    rect(width*10/16+100, height*3/4-125, 150, 100);
+    //next
+    //rect(width*13/16, height*3/4-125, 150, 100);
+
+    //display information
+    fill(0);
+    textSize(56);
+    textAlign(CENTER);
+    //text("next", width*13/16+75, height*3/4-60);
+    text(x+"+"+y, width/4+210, height*3/4-60);
+    text(answer, width*10/16+180, height*3/4-65);
+    textSize(24);
+    text("Time Limit", width/2-190, height/4+40);
+    timer();
+    makeProgressBar();
+    nextScene();
+
+    break;
+  case 5:
+    background(255);
+    noFill();
+    //progressBar
+    rect(width/2-250, height/2+20, 500, 40);
+    //task
+    rect(width/4+50, height/4, width/2-100, 100);
+    //answer
+    rect(width/2-75, height*3/4-40, 150, 100);
+    //next
+    //rect(width/2+50, height*3/4-40, 150, 100);
+
+    //display information
+    fill(0);
+    textSize(56);
+    textAlign(CENTER);
+    //text("next", width/2+120, height*3/4+30);
+    text(x+"+"+y, width/2, height/4+65);
+    text(answer, width/2, height*3/4+30);
+    textSize(24);
+    text("Time Limit", width/2-190, height/2+10);
+    timer();
+    makeProgressBar();
+    nextScene();
+
+    break;
+  case 6:
+    background(255);
+    fill(back_1, 255-back_2, 0); //RGB
+    rect(0, 0, width, height);
+    //noFill();
+    fill(255);
+    //progressBar
+    //rect(0, 0, width, height);
+    //task
+    rect(width/16+200, height/4+100, width/2-100, 100);
+    //answer
+    rect(width*10/16+100, height/4+100, 150, 100);
+    //next
+    //rect(width*13/16, height/4+100, 150, 100);
+
+    //display information
+    fill(0);
+    textSize(56);
+    textAlign(CENTER);
+    //text("next", width, height/2+35);
+    text(x+"+"+y, width/4+210, height/2);
+    text(answer, width*10/16+180, height/2);
+    //textSize(24);
+    //text("Time Limit", width/4+60, height*3/4-10);
+    timer();
+
+    if (time == 0) {
+      back_1 += 4.25;
+    }
+
+    if (back_1 > 255) {
+      back_1 = 255;
+      back_2 += 4.25;
+    }
+	makeProgressBar();
+    nextScene();
+    break;
+  case 100:
+    fill(0);
+    textSize(56);
+    textAlign(CENTER);
+    text("Enter the next.", width/2, (height/2)-50);
+    if (task == 6) {
+      text("answer1 "+answer_list[1], width/2, (height/2));
+      text("answer2 "+answer_list[2], width/2, (height/2)+50);
+      text("answer3 "+answer_list[3], width/2, (height/2)+100);
+      text("answer4 "+answer_list[4], width/2, (height/2)+150);
+      text("answer5 "+answer_list[5], width/2, (height/2)+200);
+      text("answer6 "+answer_list[6], width/2, (height/2)+250);
+    }
+  }
+}
+
+void timer() {
+  if (base_time == 0) {
+    base_time = millis();
+  }
+  time = millis() - base_time;
+  time = time/1000;
+  //text(time, width/2, height/2);
+}
+
+void makeProgressBar() {
+  n = (120-time)/6;
+  n = n * 5;
+  fill(0, 255, 0);
+  for (int i = 0; i < n; i++) {
+    if (scene == 1) {
+      rect(((width/2)+250)-5*i, height*3/4, 5, 40);
+    }
+    if (scene == 2) {
+      rect((width/2+250)-5*i, height/4, 5, 40);
+    }
+    if (scene == 3) {
+      rect((width/2+250)-5*i, height*3/4-50, 5, 40);
+    }
+    if (scene == 4) {
+      rect((width/2+250)-5*i, height/4+50, 5, 40);
+    }
+    if (scene == 5) {
+      rect((width/2+250)-5*i, height/2+20, 5, 40);
+    }
+	if (scene == 6) {
+    }
+  }
+}
+
+void nextScene() {
+  if (n < 0) {
+    task = scene;
+    answer_list[task] = num;
+    scene = 100;
+  }
+}
+void keyReleased() {
+  keydata = key;
+  if (scene == 0) {
+    if (keyCode == ENTER) {
+      scene = 1;
+    }
+  } else if ((scene == 1) || (scene == 2) || (scene == 3) || (scene == 4) || (scene == 5) || (scene == 6)) {
+    if (keyCode == ENTER) {
+      num += 1;
+      answer = "";
+      x = int(random(10, 100));
+      y = int(random(10, 100));
+    } else if (keyCode == BACKSPACE) {
+      if (answer.length() > 0) {
+        answer = answer.substring(0, answer.length()-1);
+      }
+    } else {
+      answer = answer + str(keydata);
+    }
+  } else if (scene == 100) {
+    if (keyCode == ENTER) {
+      if (task == 6) {
+      } else {
+        base_time = 0;
+        t = 0;
+        time = 0;
+        num = 0;
+        scene = task + 1;
+      }
+    }
+  }
+}
+
+    </script>
+	<canvas></canvas>
+</body>
+
+</html>
