@@ -39,7 +39,6 @@ void setup() {
 
 void draw() {
   background(255);
-
   switch(scene) {
   case 0:
     fill(0);
@@ -221,14 +220,17 @@ void draw() {
     fill(0);
     textSize(56);
     textAlign(CENTER);
-    text("Enter the next.", width/2, (height/2)-50);
+	if (task != 6){
+    	text("Enter the next.", width/2, (height/2)-50);
+	}
     if (task == 6) {
-      text("answer1 "+answer_list[1], width/2, (height/2));
-      text("answer2 "+answer_list[2], width/2, (height/2)+50);
-      text("answer3 "+answer_list[3], width/2, (height/2)+100);
-      text("answer4 "+answer_list[4], width/2, (height/2)+150);
-      text("answer5 "+answer_list[5], width/2, (height/2)+200);
-      text("answer6 "+answer_list[6], width/2, (height/2)+250);
+	  text("Result", width/2, (height/2)-100);
+      text("answer1 :"+answer_list[1], width/2, (height/2));
+      text("answer2 :"+answer_list[2], width/2, (height/2)+50);
+      text("answer3 :"+answer_list[3], width/2, (height/2)+100);
+      text("answer4 :"+answer_list[4], width/2, (height/2)+150);
+      text("answer5 :"+answer_list[5], width/2, (height/2)+200);
+      text("answer6 :"+answer_list[6], width/2, (height/2)+250);
     }
   }
 }
