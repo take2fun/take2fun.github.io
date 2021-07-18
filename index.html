@@ -16,6 +16,8 @@ int answer_list[] = {1, 2, 3, 4, 5, 6, 7};
 int x = 0;
 int y = 0;
 
+float A = 0;
+float timeA = 0;
 int num = 0;
 int count = 1;
 
@@ -207,8 +209,9 @@ void draw() {
     println(time);
     back_1 = time * 4.25;
     if (back_1 > 255) {
+      timerA();
       back_1 = 255;
-      back_2 += 4.25;
+      back_2 = timeA * 4.25;
     }
 	  makeProgressBar();
     nextScene();
@@ -238,6 +241,15 @@ void timer() {
   }
   time = millis() - base_time;
   time = time/1000;
+  //text(time, width/2, height/2);
+}
+
+void timerA() {
+  if (A == 0) {
+    A = millis();
+  }
+  timeA = millis() - A;
+  timeA = timeA/1000;
   //text(time, width/2, height/2);
 }
 
