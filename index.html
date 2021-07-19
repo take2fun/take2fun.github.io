@@ -45,7 +45,6 @@ void setup() {
     scene_list[i] = scene_list[r];
     scene_list[r] = tmp;
   }
-  println(scene_list);
 }
 
 void draw() {
@@ -78,7 +77,7 @@ void draw() {
     textAlign(CENTER);
     //text("next", width*13/16+75, height/4+65);
     text(x+"+"+y, width/4+210, height/4+65);
-    text(answer, width*10/16+180, height/4+70);
+    text(answer, width*10/16+180, height/4+65);
     textSize(24);
     text("Time Limit", width/2-190, height*3/4-10);
 
@@ -105,7 +104,7 @@ void draw() {
     textAlign(CENTER);
     //text("next", width*13/16+75, height*3/4+15);
     text(x+"+"+y, width/4+210, height*3/4+15);
-    text(answer, width*10/16+180, height*3/4+20);
+    text(answer, width*10/16+180, height*3/4+15);
     textSize(24);
     text("Time Limit", width/2-190, height/4-10);
     timer();
@@ -131,7 +130,7 @@ void draw() {
     textAlign(CENTER);
     //text("next", width*13/16+75, height/4+115);
     text(x+"+"+y, width/4+210, height/4+115);
-    text(answer, width*10/16+180, height/4+120);
+    text(answer, width*10/16+180, height/4+115);
     textSize(24);
     text("Time Limit", width/2-190, height*3/4-60);
     timer();
@@ -157,7 +156,7 @@ void draw() {
     textAlign(CENTER);
     //text("next", width*13/16+75, height*3/4-60);
     text(x+"+"+y, width/4+210, height*3/4-60);
-    text(answer, width*10/16+180, height*3/4-65);
+    text(answer, width*10/16+180, height*3/4-60);
     textSize(24);
     text("Time Limit", width/2-190, height/4+40);
     timer();
@@ -216,7 +215,6 @@ void draw() {
     //textSize(24);
     //text("Time Limit", width/4+60, height*3/4-10);
     timer();
-    //println(time);
     back_1 = time * 4.25;
     if (back_1 > 255) {
       timerA();
@@ -245,9 +243,26 @@ void draw() {
   }
   if(right == false){
     fill(0);
-    textSize(56);
+    textSize(200);
     textAlign(CENTER);
-    text("x",width*7/8,height/2);
+    if (scene == 1) {
+      text("×",width*10/16+180+width/8, height/4+70+50);
+    }
+    if (scene == 2) {
+      text("×", width*10/16+180+width/8, height*3/4+20+50);
+    }
+    if (scene == 3) {
+      text("×",width*10/16+180+width/8, height/4+120+50);
+    }
+    if (scene == 4) {
+      text("×", width*10/16+180+width/8, height*3/4-60+50);
+    }
+    if (scene == 5) {
+      text("×",width/2+width/8, height*3/4+30+50);
+    }
+	  if (scene == 6) {
+      text("×",width*10/16+180+width/8, height/2+50);
+    }
   }
 }
 
@@ -307,7 +322,6 @@ void keyReleased() {
   if (scene == 0) {
     if (keyCode == ENTER) {
       scene = scene_list[0];
-      println(scene);
     }
   } else if ((scene == 1) || (scene == 2) || (scene == 3) || (scene == 4) || (scene == 5) || (scene == 6)) {
     if (keyCode == ENTER) {
@@ -338,8 +352,9 @@ void keyReleased() {
         time = 0;
         num = 0;
         scene = scene_list[c];
-        println(scene);
-        println(c);
+        answer = "";
+        x = int(random(10, 100));
+        y = int(random(10, 100));
       }
     }
   }
